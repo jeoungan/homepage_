@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Allpage | Jeoungan Lab</title>
+    <meta
+      name="description"
+      content="jeoungan의 배포 완료 게임, 실험, 도구를 Steam 스타일로 모아보는 홈페이지입니다."
+    >
+    <link rel="stylesheet" href="styles.css?v=steam-store-2">
+    <script src="app.js?v=steam-store-2" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="top-bar">
+        <a class="brand" href="index.html" aria-label="Allpage home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>ALLPAGE</span>
+        </a>
+        <nav class="site-nav" aria-label="주요 메뉴">
+          <a href="#featured">Store</a>
+          <a href="#projects">Library</a>
+          <a href="#releases">Recent</a>
+        </nav>
+      </div>
+      <div class="steam-nav" aria-label="프로젝트 탐색">
+        <div id="typeFilters" class="type-filters" role="group" aria-label="유형 필터"></div>
+        <label class="search-box" for="searchInput">
+          <span>Search</span>
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="search"
+            autocomplete="off"
+          >
+        </label>
+      </div>
+    </header>
+
+    <main class="showcase">
+      <section id="featured" class="featured-section" aria-labelledby="featuredTitle">
+        <div class="section-heading">
+          <p class="eyebrow">Featured & Recommended</p>
+          <h1 id="featuredTitle">Jeoungan Lab Store</h1>
+        </div>
+        <article id="featuredProject" class="featured-panel" aria-live="polite"></article>
+      </section>
+
+      <section class="stats-strip" aria-label="프로젝트 요약">
+        <div>
+          <strong id="totalCount">0</strong>
+          <span>전체 프로젝트</span>
+        </div>
+        <div>
+          <strong id="gameCount">0</strong>
+          <span>게임</span>
+        </div>
+        <div>
+          <strong id="experimentCount">0</strong>
+          <span>실험</span>
+        </div>
+        <div>
+          <strong id="toolCount">0</strong>
+          <span>도구/홈페이지</span>
+        </div>
+      </section>
+
+      <section id="projects" class="project-section" aria-labelledby="projectsTitle">
+        <div class="section-heading compact">
+          <p class="eyebrow">Browse by Category</p>
+          <h2 id="projectsTitle">Projects</h2>
+        </div>
+        <div id="projectGrid" class="project-grid" aria-live="polite"></div>
+        <p id="emptyState" class="empty-state" hidden>조건에 맞는 프로젝트가 없습니다.</p>
+      </section>
+
+      <section id="releases" class="release-section" aria-labelledby="releaseTitle">
+        <div class="section-heading compact">
+          <p class="eyebrow">Recently Updated</p>
+          <h2 id="releaseTitle">All Verified Releases</h2>
+        </div>
+        <div id="releaseRows" class="release-rows"></div>
+      </section>
+    </main>
+  </body>
+</html>
