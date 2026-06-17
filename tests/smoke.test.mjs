@@ -26,6 +26,26 @@ assert.match(css, /\.featured-panel/, "styles should define a featured project p
 assert.match(css, /\.release-row/, "styles should define release rows");
 assert.match(css, /@media\s*\(/, "styles should include responsive media rules");
 assert.doesNotMatch(css, /letter-spacing:\s*-[^;]+;/, "styles should not use negative letter spacing");
+assert.match(
+  css,
+  /@media\s*\(max-width:\s*820px\)[\s\S]*\.featured-panel\s*\{[\s\S]*height:\s*auto;/,
+  "tablet/mobile layout should let the featured panel grow naturally"
+);
+assert.match(
+  css,
+  /@media\s*\(max-width:\s*820px\)[\s\S]*\.featured-side-shots\s*\{[\s\S]*display:\s*none;/,
+  "tablet/mobile layout should hide side shots to keep the hero organized"
+);
+assert.match(
+  css,
+  /@media\s*\(max-width:\s*560px\)[\s\S]*\.release-row\s*\{[\s\S]*grid-template-columns:\s*86px\s+minmax\(0,\s*1fr\);/,
+  "phone release rows should use compact media columns"
+);
+assert.match(
+  css,
+  /@media\s*\(max-width:\s*560px\)[\s\S]*\.project-detail\s+\.media-frame\s*\{[\s\S]*min-height:\s*0;/,
+  "phone detail media should not force a width larger than the viewport"
+);
 
 assert.match(js, /const projects\s*=\s*\[/, "app should define editable project data");
 assert.match(js, /tipofmytouge-opening\.mp4/, "featured project should use the local opening video");

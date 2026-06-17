@@ -342,6 +342,7 @@ h2 {
 .featured-actions,
 .detail-actions {
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .primary-link,
@@ -594,17 +595,35 @@ h2 {
     grid-template-columns: 1fr;
   }
 
-  .featured-media,
-  .project-detail .media-frame {
-    min-height: 300px;
+  .featured-panel {
+    height: auto;
+    overflow: visible;
+  }
+
+  .featured-media-link {
+    height: auto;
+  }
+
+  .featured-media {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  .featured-content {
+    align-content: start;
+  }
+
+  .featured-side-shots {
+    display: none;
   }
 
   .stats-strip {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .stats-strip div {
-    flex-basis: calc(50% - 8px);
+    min-height: 78px;
   }
 
   .project-grid {
@@ -619,6 +638,15 @@ h2 {
   .release-type,
   .release-status {
     grid-column: 2;
+  }
+
+  .project-detail {
+    gap: 22px;
+    align-items: start;
+  }
+
+  .project-detail .media-frame {
+    min-height: 300px;
   }
 }
 
@@ -638,10 +666,11 @@ h2 {
 
   .site-nav {
     justify-content: space-between;
+    gap: 12px;
   }
 
   .showcase {
-    padding-top: 24px;
+    padding-top: 22px;
   }
 
   h1 {
@@ -649,7 +678,8 @@ h2 {
   }
 
   .featured-content {
-    padding: 18px;
+    gap: 14px;
+    padding: 16px;
   }
 
   .featured-content h2,
@@ -657,15 +687,100 @@ h2 {
     font-size: 1.55rem;
   }
 
-  .featured-side-shots {
-    grid-template-columns: repeat(2, 1fr);
+  .featured-summary {
+    font-size: 0.92rem;
+    line-height: 1.58;
+  }
+
+  .steam-nav {
+    gap: 8px;
+    padding: 6px;
+  }
+
+  .type-filters {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px;
+    overflow: visible;
+  }
+
+  .type-filters button {
+    width: 100%;
+    min-width: 0;
+    padding: 0 6px;
+    font-size: 0.76rem;
+  }
+
+  .stats-strip {
+    gap: 8px;
+    margin-top: 18px;
   }
 
   .stats-strip div {
-    flex-basis: 100%;
+    min-height: 72px;
+    padding: 12px;
+  }
+
+  .stats-strip strong {
+    font-size: 1.55rem;
+  }
+
+  .stats-strip span {
+    font-size: 0.76rem;
   }
 
   .project-grid {
     grid-template-columns: 1fr;
+  }
+
+  .project-card h3,
+  .project-summary-link {
+    min-height: 0;
+  }
+
+  .release-row {
+    grid-template-columns: 86px minmax(0, 1fr);
+    gap: 5px 10px;
+    min-height: 86px;
+    padding: 8px;
+  }
+
+  .release-row img {
+    grid-row: 1 / span 3;
+    height: 58px;
+    align-self: start;
+  }
+
+  .release-title {
+    font-size: 0.92rem;
+    line-height: 1.25;
+  }
+
+  .release-tags {
+    display: none;
+  }
+
+  .release-type,
+  .release-status {
+    font-size: 0.76rem;
+  }
+
+  .project-detail-shell {
+    padding-top: 22px;
+  }
+
+  .project-detail {
+    gap: 18px;
+    padding: 16px;
+  }
+
+  .project-detail .media-frame {
+    min-height: 0;
+  }
+
+  .primary-link,
+  .secondary-link {
+    min-height: 38px;
+    padding: 0 14px;
   }
 }
