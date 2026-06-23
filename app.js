@@ -15,6 +15,20 @@ const projects = [
     note: "로컬 폴더: Makers 동아리 / 아, 그거 뭐라 그러더라"
   },
   {
+    id: "over_the_rainbow",
+    title: "Over the Rainbow",
+    repo: "over_the_rainbow",
+    type: "game",
+    status: "Verified",
+    year: "2026",
+    launchUrl: "https://jeoungan.github.io/over_the_rainbow/",
+    githubUrl: "https://github.com/jeoungan/over_the_rainbow",
+    screenshot: "assets/screenshots/over_the_rainbow.png",
+    summary: "무지개와 하늘 풍경을 배경으로 스테이지를 진행하는 레이싱/퍼즐형 웹 게임.",
+    tags: ["racing", "stage", "web game"],
+    note: "배포 페이지 제목: over the rainbow"
+  },
+  {
     id: "flanker",
     title: "Flanker Task",
     repo: "flanker",

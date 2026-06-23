@@ -651,10 +651,16 @@ h2 {
 }
 
 @media (max-width: 560px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
   .top-bar,
   .steam-nav,
   .showcase {
-    width: min(100% - 24px, 1180px);
+    width: calc(100vw - 48px);
+    max-width: 1180px;
   }
 
   .top-bar {
@@ -665,8 +671,20 @@ h2 {
   }
 
   .site-nav {
-    justify-content: space-between;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    width: 100%;
+    font-size: 0.8rem;
+  }
+
+  .site-nav a:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .site-nav a {
+    min-width: 0;
+    text-align: center;
   }
 
   .showcase {
@@ -692,6 +710,10 @@ h2 {
     line-height: 1.58;
   }
 
+  .featured-media .media-badge {
+    display: none;
+  }
+
   .steam-nav {
     gap: 8px;
     padding: 6px;
@@ -699,7 +721,7 @@ h2 {
 
   .type-filters {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 4px;
     overflow: visible;
   }

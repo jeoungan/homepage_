@@ -9,6 +9,7 @@ New-Item -ItemType Directory -Force $userDataDir | Out-Null
 
 $targets = @(
   @{ repo = "tipofmytouge"; url = "https://tipofmytouge.onrender.com/"; wait = 18 },
+  @{ repo = "over_the_rainbow"; url = "https://jeoungan.github.io/over_the_rainbow/"; wait = 6 },
   @{ repo = "flanker"; url = "https://jeoungan.github.io/flanker/"; wait = 2 },
   @{ repo = "span_word_ver2"; url = "https://jeoungan.github.io/span_word_ver2/"; wait = 2 },
   @{ repo = "gas_rt"; url = "https://jeoungan.github.io/gas_rt/"; wait = 2 },
