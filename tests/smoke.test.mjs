@@ -87,4 +87,4 @@ assert.match(js, /addEventListener\("input"/, "app should support search input")
 assert.match(js, /addEventListener\("click"/, "app should support filter clicks");
 
 const cardCount = (js.match(/title:/g) || []).length;
-assert.equal(cardCount, 19, `expected 19 discovered projects, found ${cardCount}`);
+assert.equal(cardCount, 22, `expected 22 discovered projects, found ${cardCount}`);

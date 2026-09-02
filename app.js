@@ -265,6 +265,48 @@ const projects = [
     summary: "네온 스타일의 미로/반응 게임 실험.",
     tags: ["maze", "reaction", "neon"],
     note: "배포 페이지 제목: Neon Maze"
+  },
+  {
+    id: "moa",
+    title: "오늘여름 — 모아빛",
+    repo: "moa",
+    type: "site",
+    status: "New",
+    year: "2026",
+    launchUrl: "https://oneul-summer-2607.hsmu-makers.chatgpt.site/",
+    githubUrl: "https://github.com/jeoungan/moa",
+    screenshot: "assets/screenshots/moa.png",
+    summary: "도시의 여름 미션을 고르고 동네 피드를 둘러보며 나만의 여름 순간을 기록하는 공개 체험 웹앱.",
+    tags: ["summer", "mission", "community"],
+    note: "공개 체험에서는 위치 권한과 서버 저장을 사용하지 않으며, 기록은 현재 탭에서만 유지됩니다."
+  },
+  {
+    id: "jaljatneag",
+    title: "잘잤냉?",
+    repo: "jaljatneag",
+    type: "tool",
+    status: "New",
+    year: "2026",
+    launchUrl: "https://jaljatnaeng-2607.hsmu-makers.chatgpt.site/",
+    githubUrl: "https://github.com/jeoungan/jaljatneag",
+    screenshot: "assets/screenshots/jaljatneag.png",
+    summary: "냉방 계획과 아침 기록, 시·도별 날씨 추천으로 여름밤 수면 환경을 가볍게 설계하는 웹앱.",
+    tags: ["sleep", "cooling", "weather"],
+    note: "수면 기록은 현재 탭에서만 유지되고, GPS 요청과 외부 리포트 공유는 사용하지 않습니다."
+  },
+  {
+    id: "money_noise",
+    title: "짤랑짤랑",
+    repo: "money_noise",
+    type: "tool",
+    status: "New",
+    year: "2026",
+    launchUrl: "https://jjalangjjalang-2607.hsmu-makers.chatgpt.site/",
+    githubUrl: "https://github.com/jeoungan/money_noise",
+    screenshot: "assets/screenshots/money_noise.png",
+    summary: "저금한 금액을 동전 비즈와 지폐 깃털로 바꾸어 나만의 썬캐쳐를 꾸며 보는 체험형 웹앱.",
+    tags: ["saving", "suncatcher", "interactive"],
+    note: "실제 금융정보와 연결되지 않으며, 체험 기록은 서버에 전송되지 않고 현재 탭에서만 유지됩니다."
   }
 ];
 

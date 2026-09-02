@@ -31,7 +31,10 @@ $targets = @(
   @{ repo = "game0505_2"; url = "https://jeoungan.github.io/game0505_2/"; wait = 4; kind = "game" },
   @{ repo = "game0505"; url = "https://jeoungan.github.io/game0505/"; wait = 4; kind = "game" },
   @{ repo = "homepage002"; url = "https://jeoungan.github.io/homepage002/"; wait = 2; kind = "site" },
-  @{ repo = "gas_rt_2"; url = "https://jeoungan.github.io/gas_rt_2/"; wait = 2; kind = "game" }
+  @{ repo = "gas_rt_2"; url = "https://jeoungan.github.io/gas_rt_2/"; wait = 2; kind = "game" },
+  @{ repo = "moa"; url = "https://oneul-summer-2607.hsmu-makers.chatgpt.site/"; wait = 4; kind = "site" },
+  @{ repo = "jaljatneag"; url = "https://jaljatnaeng-2607.hsmu-makers.chatgpt.site/"; wait = 4; kind = "tool" },
+  @{ repo = "money_noise"; url = "https://jjalangjjalang-2607.hsmu-makers.chatgpt.site/"; wait = 4; kind = "tool" }
 )
 
 if ($OnlyGames) {
@@ -39,7 +42,8 @@ if ($OnlyGames) {
 }
 
 if ($Projects) {
-  $targets = $targets | Where-Object { $_.repo -in $Projects }
+  $selectedProjects = $Projects | ForEach-Object { $_ -split "," } | Where-Object { $_ }
+  $targets = $targets | Where-Object { $_.repo -in $selectedProjects }
 }
 
 $results = @()

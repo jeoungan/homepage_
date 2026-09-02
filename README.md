@@ -28,7 +28,7 @@ npm.cmd run serve
 powershell -ExecutionPolicy Bypass -File scripts\capture-with-chrome.ps1
 ```
 
-게임 스크린샷만 다시 만들 때는 `-OnlyGames`를, 특정 프로젝트 하나만 다시 만들 때는 `-Projects <repo>`를 추가합니다. 캡처 스크립트는 게임 엔진이 실제로 렌더링된 뒤 이미지를 저장합니다.
+게임 스크린샷만 다시 만들 때는 `-OnlyGames`를, 특정 프로젝트 하나만 다시 만들 때는 `-Projects <repo>`를 추가합니다. 여러 프로젝트는 `-Projects repo-a,repo-b`처럼 쉼표로 구분할 수 있습니다. 캡처 스크립트는 게임 엔진이 실제로 렌더링된 뒤 이미지를 저장합니다.
 
 `tipofmytouge` 대표 비디오는 로컬 폴더의 `assets/opening.mp4`를 `assets/media/tipofmytouge-opening.mp4`로 복사해 사용합니다.
 
