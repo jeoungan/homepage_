@@ -408,7 +408,7 @@ function renderFeaturedProject() {
 
   const meta = document.createElement("p");
   meta.className = "project-meta";
-  meta.textContent = "대표 프로젝트 / Render 배포 / 로딩 비디오 재생";
+  meta.textContent = "SELECTED PROJECT / RENDER DEPLOYMENT / OPENING FILM";
 
   const title = document.createElement("h2");
   title.textContent = featured.title;
@@ -421,8 +421,8 @@ function renderFeaturedProject() {
   const actions = document.createElement("div");
   actions.className = "featured-actions";
   actions.append(
-    externalLink(featured.launchUrl, "primary-link", "Play"),
-    externalLink(featured.githubUrl, "secondary-link", "GitHub")
+    externalLink(featured.launchUrl, "primary-link", "Open project ↗"),
+    externalLink(featured.githubUrl, "secondary-link", "Source ↗")
   );
 
   const side = document.createElement("div");
@@ -493,7 +493,7 @@ function createProjectCard(project) {
   const footer = document.createElement("div");
   footer.className = "project-footer";
   footer.append(
-    externalLink(project.launchUrl, "open-link", "Open"),
+    externalLink(project.launchUrl, "open-link", "Open ↗"),
     externalLink(project.githubUrl, "repo-link", project.repo)
   );
 
@@ -577,12 +577,12 @@ function renderProjectDetail() {
   const actions = document.createElement("div");
   actions.className = "detail-actions";
   actions.append(
-    externalLink(selectedProject.launchUrl, "primary-link", "Open Project"),
-    externalLink(selectedProject.githubUrl, "secondary-link", "GitHub"),
+    externalLink(selectedProject.launchUrl, "primary-link", "Open project ↗"),
+    externalLink(selectedProject.githubUrl, "secondary-link", "Source ↗"),
     Object.assign(document.createElement("a"), {
       className: "secondary-link",
       href: "index.html#projects",
-      textContent: "Back"
+      textContent: "Back to archive"
     })
   );
 

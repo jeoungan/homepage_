@@ -11,65 +11,57 @@ const [html, css, js] = await Promise.all([
   read("app.js")
 ]);
 
-assert.match(html, /<main[^>]*class="[^"]*showcase/i, "home page should expose a showcase main area");
+assert.match(html, /<main[^>]*class="[^"]*archive-shell/i, "home page should expose an editorial archive main area");
 assert.match(html, /id="projectGrid"/, "home page should include a project grid target");
 assert.match(html, /id="searchInput"/, "home page should include search");
 assert.match(html, /id="typeFilters"/, "home page should include type filters");
 assert.match(html, /id="featuredProject"/, "home page should include a featured project area");
-assert.match(html, /id="releaseRows"/, "home page should include a Steam-style release list");
+assert.match(html, /id="releaseRows"/, "home page should include a project index list");
+assert.match(html, /class="archive-aside"/, "home page should include a persistent archive identity panel");
 assert.match(html, /app\.js/, "home page should load app.js");
 assert.match(html, /styles\.css/, "home page should load styles.css");
 
 assert.match(css, /\.project-card/, "styles should define project cards");
-assert.match(css, /\.steam-nav/, "styles should define Steam-style navigation");
+assert.match(css, /\.archive-aside/, "styles should define an editorial archive side panel");
 assert.match(css, /\.featured-panel/, "styles should define a featured project panel");
-assert.match(css, /\.release-row/, "styles should define release rows");
+assert.match(css, /\.release-row/, "styles should define project index rows");
+assert.match(css, /--cobalt:/, "styles should define the archive accent color");
 assert.match(css, /@media\s*\(/, "styles should include responsive media rules");
 assert.doesNotMatch(css, /letter-spacing:\s*-[^;]+;/, "styles should not use negative letter spacing");
 assert.match(
   css,
-  /@media\s*\(max-width:\s*820px\)[\s\S]*\.featured-panel\s*\{[\s\S]*height:\s*auto;/,
-  "tablet/mobile layout should let the featured panel grow naturally"
+  /@media\s*\(max-width:\s*720px\)[\s\S]*\.featured-panel\s*\{[\s\S]*display:\s*block;/,
+  "tablet/mobile layout should stack the selected project panel"
 );
 assert.match(
   css,
-  /@media\s*\(max-width:\s*820px\)[\s\S]*\.featured-side-shots\s*\{[\s\S]*display:\s*none;/,
-  "tablet/mobile layout should hide side shots to keep the hero organized"
+  /@media\s*\(max-width:\s*720px\)[\s\S]*\.archive-aside\s*\{[\s\S]*position:\s*relative;/,
+  "tablet/mobile layout should release the sticky archive panel"
 );
 assert.match(
   css,
-  /@media\s*\(max-width:\s*560px\)[\s\S]*\.release-row\s*\{[\s\S]*grid-template-columns:\s*86px\s+minmax\(0,\s*1fr\);/,
-  "phone release rows should use compact media columns"
+  /@media\s*\(max-width:\s*440px\)[\s\S]*\.release-row\s*\{[\s\S]*grid-template-columns:\s*52px\s+minmax\(0,\s*1fr\);/,
+  "phone project index rows should use compact media columns"
 );
 assert.match(
   css,
-  /@media\s*\(max-width:\s*560px\)[\s\S]*\.project-detail\s+\.media-frame\s*\{[\s\S]*min-height:\s*0;/,
+  /@media\s*\(max-width:\s*720px\)[\s\S]*\.project-detail\s+\.media-frame\s*\{[\s\S]*min-height:\s*0;/,
   "phone detail media should not force a width larger than the viewport"
 );
 assert.match(
   css,
-  /@media\s*\(max-width:\s*560px\)[\s\S]*html,\s*[\s\S]*body\s*\{[\s\S]*overflow-x:\s*hidden;/,
-  "phone layout should prevent horizontal page scrolling"
+  /body\s*\{[\s\S]*overflow-x:\s*hidden;/,
+  "layout should prevent horizontal page scrolling"
 );
 assert.match(
   css,
-  /@media\s*\(max-width:\s*560px\)[\s\S]*\.top-bar,\s*[\s\S]*\.steam-nav,\s*[\s\S]*\.showcase\s*\{[\s\S]*width:\s*calc\(100vw\s*-\s*48px\);/,
+  /@media\s*\(max-width:\s*440px\)[\s\S]*\.top-bar,\s*[\s\S]*\.archive-shell,\s*[\s\S]*\.project-detail-shell\s*\{[\s\S]*width:\s*calc\(100%\s*-\s*30px\);/,
   "phone layout containers should use a viewport-based calc width"
 );
 assert.match(
   css,
-  /@media\s*\(max-width:\s*560px\)[\s\S]*\.site-nav\s*\{[\s\S]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\);/,
-  "phone top navigation should wrap into two safe columns"
-);
-assert.match(
-  css,
-  /@media\s*\(max-width:\s*560px\)[\s\S]*\.type-filters\s*\{[\s\S]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\);/,
-  "phone type filters should use stable two-column controls"
-);
-assert.match(
-  css,
-  /@media\s*\(max-width:\s*560px\)[\s\S]*\.featured-media\s+\.media-badge\s*\{[\s\S]*display:\s*none;/,
-  "phone featured media should hide the corner badge to avoid clipping"
+  /@media\s*\(max-width:\s*440px\)[\s\S]*\.project-grid\s*\{[\s\S]*grid-template-columns:\s*1fr;/,
+  "phone archive should render a single readable project column"
 );
 
 assert.match(js, /const projects\s*=\s*\[/, "app should define editable project data");
