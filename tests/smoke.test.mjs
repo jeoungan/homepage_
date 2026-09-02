@@ -88,6 +88,11 @@ assert.match(
   /https:\/\/jeoungan\.github\.io\/together\//,
   "together should link to its verified Pages deployment"
 );
+assert.match(
+  js,
+  /https:\/\/jeoungan\.github\.io\/library_inventory_check\//,
+  "library_inventory_check should link to its verified Pages deployment"
+);
 assert.match(js, /function currentSearchTerm/, "app should read search state from the current input");
 assert.match(js, /currentSearchTerm\(\)/, "project filtering should use current input state");
 assert.match(js, /function renderFeaturedProject/, "app should render the featured project");
@@ -97,4 +102,4 @@ assert.match(js, /addEventListener\("input"/, "app should support search input")
 assert.match(js, /addEventListener\("click"/, "app should support filter clicks");
 
 const cardCount = (js.match(/title:/g) || []).length;
-assert.equal(cardCount, 30, `expected 30 discovered projects, found ${cardCount}`);
+assert.equal(cardCount, 31, `expected 31 discovered projects, found ${cardCount}`);

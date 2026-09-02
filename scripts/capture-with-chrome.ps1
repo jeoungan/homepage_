@@ -15,19 +15,19 @@ New-Item -ItemType Directory -Force $userDataDir | Out-Null
 $targets = @(
   @{ repo = "tipofmytouge"; url = "https://tipofmytouge.onrender.com/"; wait = 18; kind = "game" },
   @{ repo = "over_the_rainbow"; url = "https://jeoungan.github.io/over_the_rainbow/"; wait = 6; kind = "game" },
-  @{ repo = "flanker"; url = "https://jeoungan.github.io/flanker/"; wait = 2; kind = "experiment" },
+  @{ repo = "flanker"; url = "https://jeoungan.github.io/flanker/"; wait = 7; kind = "experiment" },
   @{ repo = "span_word_ver2"; url = "https://jeoungan.github.io/span_word_ver2/"; wait = 2; kind = "experiment" },
   @{ repo = "gas_rt"; url = "https://jeoungan.github.io/gas_rt/"; wait = 2; kind = "experiment" },
   @{ repo = "stairs_of_heaven"; url = "https://jeoungan.github.io/stairs_of_heaven/"; wait = 3; kind = "game" },
   @{ repo = "heart_rate_recorder"; url = "https://jeoungan.github.io/heart_rate_recorder/"; wait = 2; kind = "tool" },
-  @{ repo = "span_word"; url = "https://jeoungan.github.io/span_word/"; wait = 2; kind = "experiment" },
+  @{ repo = "span_word"; url = "https://jeoungan.github.io/span_word/"; wait = 7; kind = "experiment" },
   @{ repo = "homepage001"; url = "https://jeoungan.github.io/homepage001/"; wait = 2; kind = "site" },
   @{ repo = "BaBarian"; url = "https://jeoungan.github.io/BaBarian/"; wait = 6; kind = "game" },
   @{ repo = "HSMU_Escape_3D"; url = "https://jeoungan.github.io/HSMU_Escape_3D/"; wait = 7; kind = "game" },
   @{ repo = "Lunch_in_cafe"; url = "https://jeoungan.github.io/Lunch_in_cafe/"; wait = 7; kind = "game" },
   @{ repo = "heartopia_guidebook"; url = "https://jeoungan.github.io/heartopia_guidebook/"; wait = 2; kind = "site" },
   @{ repo = "heart_rate_player"; url = "https://jeoungan.github.io/heart_rate_player/"; wait = 2; kind = "tool" },
-  @{ repo = "span_number"; url = "https://jeoungan.github.io/span_number/"; wait = 2; kind = "experiment" },
+  @{ repo = "span_number"; url = "https://jeoungan.github.io/span_number/"; wait = 7; kind = "experiment" },
   @{ repo = "game0505_2"; url = "https://jeoungan.github.io/game0505_2/"; wait = 4; kind = "game" },
   @{ repo = "game0505"; url = "https://jeoungan.github.io/game0505/"; wait = 4; kind = "game" },
   @{ repo = "homepage002"; url = "https://jeoungan.github.io/homepage002/"; wait = 2; kind = "site" },
@@ -42,7 +42,8 @@ $targets = @(
   @{ repo = "purlse_hopes"; url = "https://jeoungan.github.io/purlse_hopes/"; wait = 2; kind = "game" },
   @{ repo = "spectrum_drill"; url = "https://jeoungan.github.io/spectrum_drill/"; wait = 2; kind = "game" },
   @{ repo = "star_library"; url = "https://jeoungan.github.io/star_library/"; wait = 3; kind = "game" },
-  @{ repo = "together"; url = "https://jeoungan.github.io/together/"; wait = 3; kind = "game" }
+  @{ repo = "together"; url = "https://jeoungan.github.io/together/"; wait = 3; kind = "game" },
+  @{ repo = "library_inventory_check"; url = "https://jeoungan.github.io/library_inventory_check/"; wait = 5; kind = "tool" }
 )
 
 if ($OnlyGames) {

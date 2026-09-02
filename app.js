@@ -419,6 +419,20 @@ const projects = [
     summary: "최대 4명이 한 방에서 크레용으로 영역을 넓히는 실시간 멀티플레이 게임 프로젝트.",
     tags: ["multiplayer", "WebSocket", "territory"],
     note: "GitHub Pages 공개본은 프로젝트·실행 안내를 제공하며, 실시간 대전은 별도의 Node.js 서버 실행이 필요합니다."
+  },
+  {
+    id: "library_inventory_check",
+    title: "바코드 장서 점검",
+    repo: "library_inventory_check",
+    type: "tool",
+    status: "Published",
+    year: "2026",
+    launchUrl: "https://jeoungan.github.io/library_inventory_check/",
+    githubUrl: "https://github.com/jeoungan/library_inventory_check",
+    screenshot: "assets/screenshots/library_inventory_check.png",
+    summary: "카메라로 바코드를 연속 스캔하고, 카테고리별 목록을 관리해 TXT로 바로 저장하는 장서 점검 웹앱.",
+    tags: ["barcode", "library", "PWA"],
+    note: "GitHub Pages가 main 브랜치 기준으로 빌드되어 공개 실행 중이며, 카메라 스캔·수동 입력·TXT 저장을 지원합니다."
   }
 ];
 
