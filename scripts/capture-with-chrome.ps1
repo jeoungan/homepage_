@@ -34,7 +34,15 @@ $targets = @(
   @{ repo = "gas_rt_2"; url = "https://jeoungan.github.io/gas_rt_2/"; wait = 2; kind = "game" },
   @{ repo = "moa"; url = "https://oneul-summer-2607.hsmu-makers.chatgpt.site/"; wait = 4; kind = "site" },
   @{ repo = "jaljatneag"; url = "https://jaljatnaeng-2607.hsmu-makers.chatgpt.site/"; wait = 4; kind = "tool" },
-  @{ repo = "money_noise"; url = "https://jjalangjjalang-2607.hsmu-makers.chatgpt.site/"; wait = 4; kind = "tool" }
+  @{ repo = "money_noise"; url = "https://jjalangjjalang-2607.hsmu-makers.chatgpt.site/"; wait = 4; kind = "tool" },
+  @{ repo = "arrow_unbound"; url = "https://jeoungan.github.io/arrow_unbound/"; wait = 2; kind = "game" },
+  @{ repo = "Awakend_Board"; url = "https://jeoungan.github.io/Awakend_Board/"; wait = 12; kind = "game" },
+  @{ repo = "neon_wave"; url = "https://jeoungan.github.io/neon_wave/"; wait = 2; kind = "game" },
+  @{ repo = "prisom_foundry"; url = "https://jeoungan.github.io/prisom_foundry/"; wait = 2; kind = "game" },
+  @{ repo = "purlse_hopes"; url = "https://jeoungan.github.io/purlse_hopes/"; wait = 2; kind = "game" },
+  @{ repo = "spectrum_drill"; url = "https://jeoungan.github.io/spectrum_drill/"; wait = 2; kind = "game" },
+  @{ repo = "star_library"; url = "https://jeoungan.github.io/star_library/"; wait = 3; kind = "game" },
+  @{ repo = "together"; url = "https://jeoungan.github.io/together/"; wait = 3; kind = "game" }
 )
 
 if ($OnlyGames) {

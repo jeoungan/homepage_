@@ -78,6 +78,16 @@ assert.match(
   /assets\/screenshots\/over_the_rainbow\.png/,
   "over_the_rainbow should use its captured screenshot"
 );
+assert.match(
+  js,
+  /https:\/\/jeoungan\.github\.io\/star_library\//,
+  "star_library should link to its verified Pages deployment"
+);
+assert.match(
+  js,
+  /https:\/\/jeoungan\.github\.io\/together\//,
+  "together should link to its verified Pages deployment"
+);
 assert.match(js, /function currentSearchTerm/, "app should read search state from the current input");
 assert.match(js, /currentSearchTerm\(\)/, "project filtering should use current input state");
 assert.match(js, /function renderFeaturedProject/, "app should render the featured project");
@@ -87,4 +97,4 @@ assert.match(js, /addEventListener\("input"/, "app should support search input")
 assert.match(js, /addEventListener\("click"/, "app should support filter clicks");
 
 const cardCount = (js.match(/title:/g) || []).length;
-assert.equal(cardCount, 22, `expected 22 discovered projects, found ${cardCount}`);
+assert.equal(cardCount, 30, `expected 30 discovered projects, found ${cardCount}`);
