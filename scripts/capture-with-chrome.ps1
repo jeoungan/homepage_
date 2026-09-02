@@ -1,3 +1,8 @@
+param(
+  [switch]$OnlyGames,
+  [string[]]$Projects
+)
+
 $ErrorActionPreference = "Continue"
 
 $chrome = "C:\Program Files\Google\Chrome\Application\chrome.exe"
@@ -8,26 +13,34 @@ New-Item -ItemType Directory -Force $screenshotDir | Out-Null
 New-Item -ItemType Directory -Force $userDataDir | Out-Null
 
 $targets = @(
-  @{ repo = "tipofmytouge"; url = "https://tipofmytouge.onrender.com/"; wait = 18 },
-  @{ repo = "over_the_rainbow"; url = "https://jeoungan.github.io/over_the_rainbow/"; wait = 6 },
-  @{ repo = "flanker"; url = "https://jeoungan.github.io/flanker/"; wait = 2 },
-  @{ repo = "span_word_ver2"; url = "https://jeoungan.github.io/span_word_ver2/"; wait = 2 },
-  @{ repo = "gas_rt"; url = "https://jeoungan.github.io/gas_rt/"; wait = 2 },
-  @{ repo = "stairs_of_heaven"; url = "https://jeoungan.github.io/stairs_of_heaven/"; wait = 3 },
-  @{ repo = "heart_rate_recorder"; url = "https://jeoungan.github.io/heart_rate_recorder/"; wait = 2 },
-  @{ repo = "span_word"; url = "https://jeoungan.github.io/span_word/"; wait = 2 },
-  @{ repo = "homepage001"; url = "https://jeoungan.github.io/homepage001/"; wait = 2 },
-  @{ repo = "BaBarian"; url = "https://jeoungan.github.io/BaBarian/"; wait = 6 },
-  @{ repo = "HSMU_Escape_3D"; url = "https://jeoungan.github.io/HSMU_Escape_3D/"; wait = 7 },
-  @{ repo = "Lunch_in_cafe"; url = "https://jeoungan.github.io/Lunch_in_cafe/"; wait = 7 },
-  @{ repo = "heartopia_guidebook"; url = "https://jeoungan.github.io/heartopia_guidebook/"; wait = 2 },
-  @{ repo = "heart_rate_player"; url = "https://jeoungan.github.io/heart_rate_player/"; wait = 2 },
-  @{ repo = "span_number"; url = "https://jeoungan.github.io/span_number/"; wait = 2 },
-  @{ repo = "game0505_2"; url = "https://jeoungan.github.io/game0505_2/"; wait = 4 },
-  @{ repo = "game0505"; url = "https://jeoungan.github.io/game0505/"; wait = 4 },
-  @{ repo = "homepage002"; url = "https://jeoungan.github.io/homepage002/"; wait = 2 },
-  @{ repo = "gas_rt_2"; url = "https://jeoungan.github.io/gas_rt_2/"; wait = 2 }
+  @{ repo = "tipofmytouge"; url = "https://tipofmytouge.onrender.com/"; wait = 18; kind = "game" },
+  @{ repo = "over_the_rainbow"; url = "https://jeoungan.github.io/over_the_rainbow/"; wait = 6; kind = "game" },
+  @{ repo = "flanker"; url = "https://jeoungan.github.io/flanker/"; wait = 2; kind = "experiment" },
+  @{ repo = "span_word_ver2"; url = "https://jeoungan.github.io/span_word_ver2/"; wait = 2; kind = "experiment" },
+  @{ repo = "gas_rt"; url = "https://jeoungan.github.io/gas_rt/"; wait = 2; kind = "experiment" },
+  @{ repo = "stairs_of_heaven"; url = "https://jeoungan.github.io/stairs_of_heaven/"; wait = 3; kind = "game" },
+  @{ repo = "heart_rate_recorder"; url = "https://jeoungan.github.io/heart_rate_recorder/"; wait = 2; kind = "tool" },
+  @{ repo = "span_word"; url = "https://jeoungan.github.io/span_word/"; wait = 2; kind = "experiment" },
+  @{ repo = "homepage001"; url = "https://jeoungan.github.io/homepage001/"; wait = 2; kind = "site" },
+  @{ repo = "BaBarian"; url = "https://jeoungan.github.io/BaBarian/"; wait = 6; kind = "game" },
+  @{ repo = "HSMU_Escape_3D"; url = "https://jeoungan.github.io/HSMU_Escape_3D/"; wait = 7; kind = "game" },
+  @{ repo = "Lunch_in_cafe"; url = "https://jeoungan.github.io/Lunch_in_cafe/"; wait = 7; kind = "game" },
+  @{ repo = "heartopia_guidebook"; url = "https://jeoungan.github.io/heartopia_guidebook/"; wait = 2; kind = "site" },
+  @{ repo = "heart_rate_player"; url = "https://jeoungan.github.io/heart_rate_player/"; wait = 2; kind = "tool" },
+  @{ repo = "span_number"; url = "https://jeoungan.github.io/span_number/"; wait = 2; kind = "experiment" },
+  @{ repo = "game0505_2"; url = "https://jeoungan.github.io/game0505_2/"; wait = 4; kind = "game" },
+  @{ repo = "game0505"; url = "https://jeoungan.github.io/game0505/"; wait = 4; kind = "game" },
+  @{ repo = "homepage002"; url = "https://jeoungan.github.io/homepage002/"; wait = 2; kind = "site" },
+  @{ repo = "gas_rt_2"; url = "https://jeoungan.github.io/gas_rt_2/"; wait = 2; kind = "game" }
 )
+
+if ($OnlyGames) {
+  $targets = $targets | Where-Object { $_.kind -eq "game" }
+}
+
+if ($Projects) {
+  $targets = $targets | Where-Object { $_.repo -in $Projects }
+}
 
 $results = @()
 
@@ -49,20 +62,15 @@ foreach ($target in $targets) {
     $errorMessage = $_.Exception.Message
   }
 
-  if ($target.repo -eq "tipofmytouge") {
-    Start-Sleep -Seconds $target.wait
-  } else {
-    Start-Sleep -Seconds $target.wait
-  }
-
   $args = @(
     "--headless=new",
-    "--disable-gpu",
     "--hide-scrollbars",
     "--no-first-run",
     "--no-default-browser-check",
     "--user-data-dir=$userDataDir",
     "--window-size=1280,720",
+    "--run-all-compositor-stages-before-draw",
+    "--virtual-time-budget=$($target.wait * 1000)",
     "--screenshot=$path",
     $target.url
   )
@@ -82,5 +90,8 @@ foreach ($target in $targets) {
   }
 }
 
-$results | ConvertTo-Json -Depth 4 | Set-Content -Encoding UTF8 (Join-Path $screenshotDir "capture-results.json")
+if (-not $OnlyGames -and -not $Projects) {
+  $results | ConvertTo-Json -Depth 4 | Set-Content -Encoding UTF8 (Join-Path $screenshotDir "capture-results.json")
+}
+
 $results | ConvertTo-Json -Depth 4
