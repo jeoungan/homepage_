@@ -32,6 +32,12 @@ powershell -ExecutionPolicy Bypass -File scripts\capture-with-chrome.ps1
 
 `tipofmytouge` 대표 비디오는 로컬 폴더의 `assets/opening.mp4`를 `assets/media/tipofmytouge-opening.mp4`로 복사해 사용합니다.
 
+대표 영역은 **화락제도 락이다 → 아, 그거 뭐라 그러더라** 순서의 두 장 캐러셀입니다. 화살표·작품 선택 버튼·가로 스와이프를 지원하며, 슬라이드 영역에 키보드 초점을 두면 좌우 방향키와 Home/End로 이동할 수 있습니다.
+
+화락제 영상은 실제 게임의 최적화본을 `assets/media/hwarak-opening.mp4`로 복사했습니다. 두 영상은 현재 화면에 보이는 장만 음소거로 자동 재생하고, 화면 밖으로 이동하거나 다른 탭으로 전환하면 일시 정지합니다. 플레이어에서 재생·일시 정지·탐색·소리를 조작할 수 있고, 자동 재생이 제한되면 재생 버튼이 표시됩니다. 기존 `tipofmytouge` 오프닝은 원본에 오디오 트랙이 없는 세로 영상이며, 두 영상 모두 원래 비율을 유지합니다.
+
+로컬 서버는 MP4 탐색을 위한 HTTP Range 및 HEAD 요청을 지원합니다.
+
 ## 검증
 
 ```powershell

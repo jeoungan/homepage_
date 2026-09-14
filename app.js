@@ -1,5 +1,20 @@
 const projects = [
   {
+    id: "Hwarack_is_rock",
+    title: "화락제도 락이다",
+    repo: "Hwarack_is_rock",
+    type: "game",
+    status: "Featured",
+    year: "2026",
+    launchUrl: "https://jeoungan.github.io/Hwarack_is_rock/",
+    githubUrl: "https://github.com/jeoungan/Hwarack_is_rock",
+    screenshot: "assets/screenshots/hwarak.jpg",
+    videoSrc: "assets/media/hwarak-opening.mp4",
+    summary: "화락제의 무대와 음악을 즐기는 리듬 게임. 수달과 함께 축제의 박자를 맞춰 보세요.",
+    tags: ["rhythm", "festival", "opening video"],
+    note: "화락제 리듬 게임. 오프닝 영상의 소리는 플레이어에서 켤 수 있습니다."
+  },
+  {
     id: "tipofmytouge",
     title: "아, 그거 뭐라 그러더라",
     repo: "tipofmytouge",
@@ -12,7 +27,7 @@ const projects = [
     videoSrc: "assets/media/tipofmytouge-opening.mp4",
     summary: "답답한 친구가 설명하는 단어를 맞히는 대화형 추리 게임.",
     tags: ["AI", "word game", "Render", "opening video"],
-    note: "로컬 폴더: Makers 동아리 / 아, 그거 뭐라 그러더라"
+    note: "답답한 친구의 설명으로 단어를 추리해 보세요. 오프닝 원본은 소리가 없는 영상입니다."
   },
   {
     id: "over_the_rainbow",
@@ -487,20 +502,93 @@ function externalLink(url, className, text) {
   return link;
 }
 
-function createMedia(project, featured = false) {
+const mediaControllers = new WeakMap();
+
+function createMedia(project, featured = false, active = true) {
   const frame = document.createElement("span");
   frame.className = featured ? "media-frame featured-media" : "media-frame";
+  const badge = document.createElement("span");
+  badge.className = "media-badge";
+  badge.textContent = project.status;
 
   if (featured && project.videoSrc) {
     const video = document.createElement("video");
-    video.src = project.videoSrc;
     video.poster = project.screenshot;
-    video.autoplay = true;
     video.muted = true;
+    video.defaultMuted = true;
     video.loop = true;
     video.playsInline = true;
-    video.controls = false;
-    frame.append(video);
+    video.controls = true;
+    video.preload = "metadata";
+    video.setAttribute("playsinline", "");
+    video.setAttribute("aria-label", `${project.title} 오프닝 영상`);
+    const playButton = document.createElement("button");
+    playButton.type = "button";
+    playButton.className = "video-play-prompt";
+    playButton.textContent = "오프닝 재생";
+    playButton.hidden = true;
+    frame.append(video, playButton);
+
+    let isActive = active;
+    let isVisible = false;
+    let playbackAllowed = false;
+    let userPaused = false;
+    const updatePlayback = () => {
+      playbackAllowed = isActive && isVisible && !document.hidden;
+      if (!playbackAllowed) {
+        video.pause();
+        return;
+      }
+      if (!video.hasAttribute("src")) video.src = project.videoSrc;
+      if (userPaused) return;
+      video.play().catch(() => {
+        if (playbackAllowed && video.paused) {
+          playButton.hidden = false;
+          badge.textContent = "오프닝";
+        }
+      });
+    };
+    mediaControllers.set(frame, {
+      setActive(value) {
+        if (value && !isActive) {
+          userPaused = false;
+          video.muted = true;
+          if (video.readyState > 0) video.currentTime = 0;
+        }
+        isActive = value;
+        updatePlayback();
+      }
+    });
+    video.addEventListener("playing", () => {
+      if (!playbackAllowed) {
+        video.pause();
+        return;
+      }
+      userPaused = false;
+      playButton.hidden = true;
+      badge.textContent = "재생 중";
+    });
+    video.addEventListener("pause", () => {
+      if (playbackAllowed) userPaused = true;
+      badge.textContent = "일시 정지";
+    });
+    video.addEventListener("waiting", () => { badge.textContent = "불러오는 중"; });
+    video.addEventListener("error", () => {
+      badge.textContent = "영상을 다시 불러와 주세요";
+      playButton.textContent = "오프닝 다시 재생";
+      playButton.hidden = false;
+    });
+    playButton.addEventListener("click", () => {
+      userPaused = false;
+      if (video.error) video.load();
+      updatePlayback();
+    });
+    new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+      updatePlayback();
+    }, { threshold: 0.15 }).observe(frame);
+    document.addEventListener("visibilitychange", updatePlayback);
+    badge.textContent = "오프닝";
   } else {
     const image = document.createElement("img");
     image.src = project.screenshot;
@@ -509,9 +597,6 @@ function createMedia(project, featured = false) {
     frame.append(image);
   }
 
-  const badge = document.createElement("span");
-  badge.className = "media-badge";
-  badge.textContent = featured && project.videoSrc ? "Playing" : project.status;
   frame.append(badge);
 
   return frame;
@@ -562,53 +647,119 @@ function renderFilters() {
 
 function renderFeaturedProject() {
   const root = document.querySelector("#featuredProject");
-  const featured = projectById("tipofmytouge");
+  const navigation = document.querySelector("#featuredNavigation");
+  const status = document.querySelector("#featuredStatus");
+  if (!root || !navigation) return;
 
-  if (!root || !featured) {
-    return;
-  }
+  const selected = ["Hwarack_is_rock", "tipofmytouge"].map(projectById);
+  let currentIndex = 0;
+  let carouselWidth = root.clientWidth;
+  const slides = selected.map((featured, index) => {
+    const slide = document.createElement("article");
+    slide.className = "featured-panel";
+    slide.id = `featured-${featured.id}`;
+    slide.setAttribute("aria-roledescription", "슬라이드");
+    slide.setAttribute("aria-label", `${index + 1} / ${selected.length}: ${featured.title}`);
+    const media = createMedia(featured, true, index === 0);
+    const content = document.createElement("div");
+    content.className = "featured-content";
+    const heading = document.createElement("div");
+    const meta = document.createElement("p");
+    meta.className = "project-meta";
+    meta.textContent = `SELECTED 0${index + 1} / OPENING FILM`;
+    const title = document.createElement("h2");
+    title.textContent = featured.title;
+    heading.append(meta, title);
+    const description = document.createElement("div");
+    const summary = document.createElement("p");
+    summary.className = "featured-summary";
+    summary.textContent = featured.summary;
+    const actions = document.createElement("div");
+    actions.className = "featured-actions";
+    actions.append(
+      externalLink(featured.launchUrl, "primary-link", "게임 플레이 ↗"),
+      Object.assign(document.createElement("a"), {
+        className: "secondary-link",
+        href: `project.html?id=${encodeURIComponent(featured.id)}`,
+        textContent: "작품 소개"
+      })
+    );
+    description.append(summary, createTags(featured.tags), actions);
+    content.append(heading, description);
+    slide.append(media, content);
+    return slide;
+  });
+  root.replaceChildren(...slides);
 
-  const mediaLink = externalLink(featured.launchUrl, "featured-media-link", "");
-  mediaLink.append(createMedia(featured, true));
-
-  const content = document.createElement("div");
-  content.className = "featured-content";
-
-  const meta = document.createElement("p");
-  meta.className = "project-meta";
-  meta.textContent = "SELECTED PROJECT / RENDER DEPLOYMENT / OPENING FILM";
-
-  const title = document.createElement("h2");
-  title.textContent = featured.title;
-
-  const summary = document.createElement("p");
-  summary.className = "featured-summary";
-  summary.textContent = featured.summary;
-
-  const tags = createTags(featured.tags);
-  const actions = document.createElement("div");
-  actions.className = "featured-actions";
-  actions.append(
-    externalLink(featured.launchUrl, "primary-link", "Open project ↗"),
-    externalLink(featured.githubUrl, "secondary-link", "Source ↗")
-  );
-
-  const side = document.createElement("div");
-  side.className = "featured-side-shots";
-  projects
-    .filter((project) => project.id !== featured.id)
-    .slice(0, 4)
-    .forEach((project) => {
-      const link = externalLink(project.launchUrl, "side-shot", project.title);
-      const image = document.createElement("img");
-      image.src = project.screenshot;
-      image.alt = `${project.title} 스크린샷`;
-      link.replaceChildren(image);
-      side.append(link);
+  const selectSlide = (index, smooth = true) => {
+    const nextIndex = (index + slides.length) % slides.length;
+    root.scrollTo({
+      left: nextIndex * root.clientWidth,
+      behavior: smooth && !window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "smooth" : "instant"
     });
+  };
+  const previous = document.createElement("button");
+  previous.type = "button";
+  previous.className = "carousel-arrow";
+  previous.textContent = "←";
+  previous.setAttribute("aria-label", "이전 대표 작품");
+  previous.setAttribute("aria-controls", root.id);
+  previous.addEventListener("click", () => selectSlide(currentIndex - 1));
+  const next = document.createElement("button");
+  next.type = "button";
+  next.className = "carousel-arrow";
+  next.textContent = "→";
+  next.setAttribute("aria-label", "다음 대표 작품");
+  next.setAttribute("aria-controls", root.id);
+  next.addEventListener("click", () => selectSlide(currentIndex + 1));
+  const choices = document.createElement("div");
+  choices.className = "carousel-choices";
+  const buttons = selected.map((project, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "carousel-choice";
+    button.setAttribute("aria-label", `${index + 1}번 작품: ${project.title}`);
+    button.setAttribute("aria-controls", slides[index].id);
+    const number = document.createElement("span");
+    number.textContent = `0${index + 1}`;
+    const label = document.createElement("span");
+    label.textContent = project.title;
+    button.append(number, label);
+    button.addEventListener("click", () => selectSlide(index));
+    return button;
+  });
+  choices.append(...buttons);
+  navigation.replaceChildren(previous, choices, next);
 
-  content.append(meta, title, summary, tags, actions);
-  root.replaceChildren(mediaLink, content, side);
+  const updateSelection = (index) => {
+    currentIndex = index;
+    slides.forEach((slide, slideIndex) => {
+      const active = slideIndex === index;
+      slide.inert = !active;
+      slide.setAttribute("aria-hidden", String(!active));
+      buttons[slideIndex].setAttribute("aria-current", String(active));
+      mediaControllers.get(slide.querySelector(".media-frame"))?.setActive(active);
+    });
+    status.textContent = `${index + 1} / ${selected.length}, ${selected[index].title}`;
+  };
+  root.addEventListener("scroll", () => {
+    if (root.clientWidth !== carouselWidth) return;
+    const index = Math.min(slides.length - 1, Math.max(0, Math.round(root.scrollLeft / root.clientWidth)));
+    if (index !== currentIndex) updateSelection(index);
+  }, { passive: true });
+  root.addEventListener("keydown", (event) => {
+    if (event.target !== root) return;
+    const keyIndex = { ArrowLeft: currentIndex - 1, ArrowRight: currentIndex + 1, Home: 0, End: slides.length - 1 };
+    if (event.key in keyIndex) {
+      event.preventDefault();
+      selectSlide(keyIndex[event.key]);
+    }
+  });
+  new ResizeObserver(() => {
+    carouselWidth = root.clientWidth;
+    selectSlide(currentIndex, false);
+  }).observe(root);
+  updateSelection(0);
 }
 
 function createTags(tags) {
@@ -721,8 +872,10 @@ function renderProjectDetail() {
 
   document.title = `${selectedProject.title} | Allpage`;
 
-  const media = externalLink(selectedProject.launchUrl, "detail-media-link", "");
-  media.append(createMedia(selectedProject, Boolean(selectedProject.videoSrc)));
+  const media = selectedProject.videoSrc
+    ? createMedia(selectedProject, true)
+    : externalLink(selectedProject.launchUrl, "detail-media-link", "");
+  if (!selectedProject.videoSrc) media.append(createMedia(selectedProject));
 
   const content = document.createElement("div");
   content.className = "detail-content";

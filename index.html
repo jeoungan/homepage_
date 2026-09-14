@@ -8,8 +8,8 @@
       name="description"
       content="jeoungan이 만든 게임, 실험, 도구를 모아 둔 디지털 프로젝트 아카이브입니다."
     >
-    <link rel="stylesheet" href="styles.css?v=archive-31-fd72543">
-    <script src="app.js?v=archive-31-fd72543" defer></script>
+    <link rel="stylesheet" href="styles.css?v=archive-32-featured">
+    <script src="app.js?v=archive-32-featured" defer></script>
   </head>
   <body>
     <header class="site-header">
@@ -54,12 +54,14 @@
       </aside>
 
       <div class="archive-content">
-        <section id="featured" class="featured-section" aria-labelledby="featuredTitle">
+        <section id="featured" class="featured-section" aria-label="대표 프로젝트" aria-roledescription="캐러셀">
           <div class="section-heading">
             <p class="eyebrow">01 / SELECTED WORK</p>
-            <p class="section-note">A changing collection of playful digital experiments.</p>
+            <p id="featuredHint" class="section-note">옆으로 넘겨 두 작품의 오프닝을 만나보세요.</p>
           </div>
-          <article id="featuredProject" class="featured-panel" aria-live="polite"></article>
+          <div id="featuredProject" class="featured-carousel" tabindex="0" aria-label="대표 작품 슬라이드" aria-describedby="featuredHint"></div>
+          <div id="featuredNavigation" class="featured-navigation"></div>
+          <p id="featuredStatus" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
         </section>
 
         <section id="projects" class="project-section" aria-labelledby="projectsTitle">
