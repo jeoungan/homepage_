@@ -38,6 +38,8 @@ powershell -ExecutionPolicy Bypass -File scripts\capture-with-chrome.ps1
 
 로컬 서버는 MP4 탐색을 위한 HTTP Range 및 HEAD 요청을 지원합니다.
 
+화락제와 `tipofmytouge`의 아카이브 썸네일은 제목 전체를 보여주는 가로형 커버입니다. `hwarak.jpg`는 화락제 대표 아트, `tipofmytouge-logo.png`는 원본 프로젝트의 `Logo` 폴더에 있던 네온 로고를 사용합니다. `imageLayout: "title"`인 카드에서는 세로 자르기와 마우스 확대를 적용하지 않습니다.
+
 ## 검증
 
 ```powershell

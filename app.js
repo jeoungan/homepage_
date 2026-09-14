@@ -9,6 +9,7 @@ const projects = [
     launchUrl: "https://jeoungan.github.io/Hwarack_is_rock/",
     githubUrl: "https://github.com/jeoungan/Hwarack_is_rock",
     screenshot: "assets/screenshots/hwarak.jpg",
+    imageLayout: "title",
     videoSrc: "assets/media/hwarak-opening.mp4",
     summary: "화락제의 무대와 음악을 즐기는 리듬 게임. 수달과 함께 축제의 박자를 맞춰 보세요.",
     tags: ["rhythm", "festival", "opening video"],
@@ -23,7 +24,8 @@ const projects = [
     year: "2026",
     launchUrl: "https://tipofmytouge.onrender.com/",
     githubUrl: "https://github.com/jeoungan/tipofmytouge",
-    screenshot: "assets/screenshots/tipofmytouge.png",
+    screenshot: "assets/screenshots/tipofmytouge-logo.png",
+    imageLayout: "title",
     videoSrc: "assets/media/tipofmytouge-opening.mp4",
     summary: "답답한 친구가 설명하는 단어를 맞히는 대화형 추리 게임.",
     tags: ["AI", "word game", "Render", "opening video"],
@@ -507,6 +509,7 @@ const mediaControllers = new WeakMap();
 function createMedia(project, featured = false, active = true) {
   const frame = document.createElement("span");
   frame.className = featured ? "media-frame featured-media" : "media-frame";
+  if (!featured && project.imageLayout === "title") frame.classList.add("title-cover");
   const badge = document.createElement("span");
   badge.className = "media-badge";
   badge.textContent = project.status;
@@ -831,6 +834,7 @@ function renderReleaseRows() {
   root.replaceChildren(
     ...filteredProjects().map((project) => {
       const row = externalLink(project.launchUrl, "release-row", "");
+      if (project.imageLayout === "title") row.classList.add("title-cover-row");
       row.innerHTML = `
         <img src="${project.screenshot}" alt="${project.title} 스크린샷">
         <span class="release-title">${project.title}</span>
