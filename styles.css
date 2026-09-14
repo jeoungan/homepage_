@@ -172,20 +172,18 @@ h2 { margin-bottom: 0; font-family: Manrope, "IBM Plex Sans KR", sans-serif; fon
 .type-filters button:hover, .type-filters button[aria-pressed="true"] { border-color: var(--cobalt); color: #fff; background: var(--cobalt); }
 
 .project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 17px; }
-.project-card { display: grid; align-content: start; min-width: 0; }
-.project-card:nth-child(3n + 2) { margin-top: 58px; }
-.project-card:nth-child(5n + 4) { margin-top: -26px; }
-.project-card:nth-child(7n + 6) { margin-top: 38px; }
-.project-card .media-frame { aspect-ratio: 1 / 1.08; }
-.project-card:nth-child(3n + 2) .media-frame { aspect-ratio: 1 / 1.32; }
-.project-card:nth-child(5n + 4) .media-frame { aspect-ratio: 1.3 / 1; }
-.project-card-body { display: grid; align-content: start; gap: 8px; padding: 12px 0 0; }
+.project-card { display: flex; flex-direction: column; min-width: 0; }
+.project-card .media-link { flex: none; }
+.project-card .media-frame { aspect-ratio: 16 / 10; background: var(--wash); }
+.project-card .media-frame img { object-fit: contain; transform: none; }
+.project-card .media-badge { display: none; }
+.project-card-body { display: flex; flex: 1; flex-direction: column; gap: 8px; padding: 12px 0 0; }
 .project-card .project-meta { margin: 0; font-size: 0.54rem; }
 .project-card h3 { margin: 0; font-family: Manrope, "IBM Plex Sans KR", sans-serif; font-size: 1.05rem; font-weight: 700; line-height: 1.28; }
 .project-card h3 a { background-image: linear-gradient(var(--cobalt), var(--cobalt)); background-repeat: no-repeat; background-position: left bottom; background-size: 0 1px; transition: background-size 180ms ease; }
 .project-card h3 a:hover { background-size: 100% 1px; }
-.project-summary-link { min-height: 3.5em; color: var(--ink-soft); font-size: 0.76rem; line-height: 1.65; }
-.project-card .tag-list { margin-top: 1px; }
+.project-summary-link { color: var(--ink-soft); font-size: 0.76rem; line-height: 1.65; }
+.project-card .tag-list { margin-top: auto; padding-top: 4px; }
 .project-card .tag-list li { padding: 3px 5px; font-size: 0.5rem; }
 .project-footer { justify-content: space-between; gap: 12px; margin-top: 3px; padding-top: 10px; border-top: 1px solid var(--line); font-family: "DM Mono", monospace; font-size: 0.55rem; }
 .open-link { color: var(--cobalt); }
@@ -229,8 +227,6 @@ h2 { margin-bottom: 0; font-family: Manrope, "IBM Plex Sans KR", sans-serif; fon
   .featured-content { grid-template-columns: 1fr; gap: 20px; }
   .featured-content h2 { max-width: none; }
   .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 16px; }
-  .project-card:nth-child(n) { margin-top: 0; }
-  .project-card:nth-child(even) { margin-top: 44px; }
   .release-row { grid-template-columns: 72px minmax(135px, 1.1fr) minmax(145px, 1.2fr) 70px; }
   .release-status { display: none; }
 }
@@ -258,8 +254,6 @@ h2 { margin-bottom: 0; font-family: Manrope, "IBM Plex Sans KR", sans-serif; fon
   .project-heading-row { align-items: stretch; flex-direction: column; gap: 22px; }
   .search-box { width: 100%; }
   .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 13px; }
-  .project-card:nth-child(even) { margin-top: 28px; }
-  .project-summary-link { min-height: 0; }
   .stats-strip { grid-template-columns: repeat(2, 1fr); margin-top: 56px; }
   .stats-strip div:nth-child(2) { border-right: 0; }
   .stats-strip div:nth-child(n + 3) { border-top: 1px solid var(--line); }
@@ -284,8 +278,6 @@ h2 { margin-bottom: 0; font-family: Manrope, "IBM Plex Sans KR", sans-serif; fon
   .archive-nav { grid-template-columns: 1fr; gap: 12px; }
   .archive-nav a { display: flex; }
   .project-grid { grid-template-columns: 1fr; gap: 28px; }
-  .project-card:nth-child(even) { margin-top: 0; }
-  .project-card .media-frame, .project-card:nth-child(n) .media-frame { aspect-ratio: 1.35 / 1; }
   .featured-content h2 { font-size: 2.15rem; }
   .featured-navigation { gap: 6px; }
   .carousel-choices { gap: 6px; }
@@ -301,8 +293,8 @@ h2 { margin-bottom: 0; font-family: Manrope, "IBM Plex Sans KR", sans-serif; fon
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
 
-/* Keep title artwork whole, including when filtering changes card positions. */
-.project-card:nth-child(n) .media-frame.title-cover { aspect-ratio: var(--cover-aspect-ratio, 1200 / 630); background: #10121a; }
+/* All archive cards share a frame; title art keeps its dark backdrop. */
+.project-card .media-frame.title-cover { background: #10121a; }
 .title-cover img, .release-row.title-cover-row img { object-fit: contain; }
 .title-cover .media-badge { display: none; }
 .media-link:hover .title-cover img { transform: none; }

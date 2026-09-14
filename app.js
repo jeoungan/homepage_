@@ -376,6 +376,7 @@ const projects = [
   {
     id: "arrow_unbound",
     title: "Arrow Unbound",
+    indexOnly: true,
     repo: "arrow_unbound",
     type: "game",
     status: "Published",
@@ -404,6 +405,7 @@ const projects = [
   {
     id: "neon_wave",
     title: "Neon Wave",
+    indexOnly: true,
     repo: "neon_wave",
     type: "game",
     status: "Published",
@@ -418,6 +420,7 @@ const projects = [
   {
     id: "prisom_foundry",
     title: "Prism Foundry",
+    indexOnly: true,
     repo: "prisom_foundry",
     type: "game",
     status: "Published",
@@ -432,6 +435,7 @@ const projects = [
   {
     id: "purlse_hopes",
     title: "Pulse Hoops",
+    indexOnly: true,
     repo: "purlse_hopes",
     type: "game",
     status: "Published",
@@ -446,6 +450,7 @@ const projects = [
   {
     id: "spectrum_drill",
     title: "Spectrum Drill",
+    indexOnly: true,
     repo: "spectrum_drill",
     type: "game",
     status: "Published",
@@ -835,9 +840,18 @@ function renderProjects() {
     return;
   }
 
-  const visibleProjects = filteredProjects();
+  const matchingProjects = filteredProjects();
+  const visibleProjects = matchingProjects.filter((project) => !project.indexOnly);
   grid.replaceChildren(...visibleProjects.map(createProjectCard));
   emptyState.hidden = visibleProjects.length > 0;
+  if (matchingProjects.length > 0 && visibleProjects.length === 0) {
+    const indexLink = document.createElement("a");
+    indexLink.href = "#releases";
+    indexLink.textContent = `조건에 맞는 작품 ${matchingProjects.length}개를 아래 프로젝트 목록에서 보기 ↓`;
+    emptyState.replaceChildren(indexLink);
+  } else {
+    emptyState.textContent = "조건에 맞는 프로젝트가 없습니다.";
+  }
 }
 
 function createProjectCard(project) {
