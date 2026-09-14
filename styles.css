@@ -302,7 +302,7 @@ h2 { margin-bottom: 0; font-family: Manrope, "IBM Plex Sans KR", sans-serif; fon
 }
 
 /* Keep title artwork whole, including when filtering changes card positions. */
-.project-card:nth-child(n) .media-frame.title-cover { aspect-ratio: 1200 / 630; background: #10121a; }
+.project-card:nth-child(n) .media-frame.title-cover { aspect-ratio: var(--cover-aspect-ratio, 1200 / 630); background: #10121a; }
 .title-cover img, .release-row.title-cover-row img { object-fit: contain; }
 .title-cover .media-badge { display: none; }
 .media-link:hover .title-cover img { transform: none; }

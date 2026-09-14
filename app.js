@@ -32,6 +32,54 @@ const projects = [
     note: "답답한 친구의 설명으로 단어를 추리해 보세요. 오프닝 원본은 소리가 없는 영상입니다."
   },
   {
+    id: "10cat",
+    title: "고양이양이 — 나른한 오후",
+    repo: "10cat",
+    type: "game",
+    status: "New",
+    year: "2026",
+    launchUrl: "https://jeoungan.github.io/10cat/",
+    githubUrl: "https://github.com/jeoungan/10cat",
+    screenshot: "assets/screenshots/10cat-cover.png",
+    imageLayout: "title",
+    imageAspectRatio: "8 / 5",
+    summary: "열 마리 고양이를 돌보고 꾸미며, 친밀도에 따라 작은 이야기와 추억을 모으는 일러스트 게임.",
+    tags: ["cats", "care", "story"],
+    note: "거실·침실·테라스를 오가며 고양이와 교감하고 옷장과 추억 앨범을 채워 보세요. 진행 상황은 현재 브라우저에 저장됩니다."
+  },
+  {
+    id: "blue_hour",
+    title: "서바이벌 — 새벽선",
+    repo: "-",
+    type: "game",
+    status: "New",
+    year: "2026",
+    launchUrl: "https://jeoungan.github.io/-/",
+    githubUrl: "https://github.com/jeoungan/-",
+    screenshot: "assets/screenshots/blue-hour-cover.webp",
+    imageLayout: "title",
+    imageAspectRatio: "8 / 5",
+    summary: "비 내리는 캠퍼스에서 동료와 단서를 모으고, 제한 시간 안에 탈출 경로를 선택하는 생존 어드벤처.",
+    tags: ["survival", "choice", "BLUE HOUR"],
+    note: "해무대학교를 탐험하며 세 동료와 세 갈래 탈출을 만납니다. 제한 시간은 게임 속 30분이며, 진행과 엔딩 기록은 현재 브라우저에 저장됩니다."
+  },
+  {
+    id: "book_",
+    title: "책 요정",
+    repo: "book_",
+    type: "tool",
+    status: "New",
+    year: "2026",
+    launchUrl: "https://jeoungan.github.io/book_/",
+    githubUrl: "https://github.com/jeoungan/book_",
+    screenshot: "assets/screenshots/book-fairy-cover.webp",
+    imageLayout: "title",
+    imageAspectRatio: "8 / 5",
+    summary: "독서 감상을 기록하고 요정과 서재를 꾸미며, 관심 주제에 맞는 책과 체험 대화를 만나는 개인 서재.",
+    tags: ["reading", "journal", "customization"],
+    note: "로그인 없이 이용하는 포트폴리오 체험 앱입니다. 감상과 꾸미기는 현재 브라우저에 저장되며, 대화는 감상과 책 주제에 맞춰 준비된 질문으로 진행됩니다."
+  },
+  {
     id: "over_the_rainbow",
     title: "Over the Rainbow",
     repo: "over_the_rainbow",
@@ -509,7 +557,10 @@ const mediaControllers = new WeakMap();
 function createMedia(project, featured = false, active = true) {
   const frame = document.createElement("span");
   frame.className = featured ? "media-frame featured-media" : "media-frame";
-  if (!featured && project.imageLayout === "title") frame.classList.add("title-cover");
+  if (!featured && project.imageLayout === "title") {
+    frame.classList.add("title-cover");
+    if (project.imageAspectRatio) frame.style.setProperty("--cover-aspect-ratio", project.imageAspectRatio);
+  }
   const badge = document.createElement("span");
   badge.className = "media-badge";
   badge.textContent = project.status;
