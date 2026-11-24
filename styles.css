@@ -156,6 +156,7 @@ h2 { margin-bottom: 0; font-family: Manrope, "IBM Plex Sans KR", sans-serif; fon
 .primary-link { color: #fff; background: var(--ink); }
 .primary-link:hover { background: var(--cobalt); border-color: var(--cobalt); }
 .secondary-link:hover { color: #fff; background: var(--ink); }
+.project-availability { padding: 9px 0; color: var(--ink-soft); font-size: 0.8rem; line-height: 1.5; }
 .featured-side-shots { display: none; }
 
 .project-section { margin-top: 76px; }
@@ -212,9 +213,10 @@ h2 { margin-bottom: 0; font-family: Manrope, "IBM Plex Sans KR", sans-serif; fon
 .detail-breadcrumb span { margin: 0 8px; }
 .project-detail { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(270px, 0.75fr); gap: 0; border: 1px solid var(--ink); }
 .project-detail .media-frame { min-height: 480px; aspect-ratio: auto; }
+.project-detail .media-frame:not(.featured-media) .media-badge { display: none; }
 .project-detail > .featured-media { align-self: stretch; }
 .detail-content { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; padding: 34px; border-left: 1px solid var(--ink); }
-.project-detail h1 { margin-bottom: 0; font-family: Manrope, "IBM Plex Sans KR", sans-serif; font-size: clamp(2.1rem, 4.2vw, 4rem); line-height: 1.05; }
+.project-detail h1 { margin-bottom: 0; font-family: Manrope, "IBM Plex Sans KR", sans-serif; font-size: clamp(2.1rem, 4.2vw, 4rem); line-height: 1.05; word-break: keep-all; }
 .detail-summary, .detail-note { margin: 24px 0 0; color: var(--ink-soft); font-size: 0.91rem; line-height: 1.75; }
 .detail-note { padding: 12px 0 0; border-top: 1px solid var(--line); font-family: "DM Mono", monospace; font-size: 0.62rem; }
 .detail-content .tag-list { margin-top: 24px; }

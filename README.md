@@ -1,6 +1,6 @@
 # Allpage
 
-jeoungan의 배포 완료 프로젝트를 매거진형 디지털 아카이브로 모아보는 정적 홈페이지입니다.
+jeoungan의 공개 프로젝트와 제작 중인 작업을 매거진형 디지털 아카이브로 모아보는 정적 홈페이지입니다.
 
 ## 보기
 
@@ -16,6 +16,8 @@ npm.cmd run serve
 
 - `launchUrl`: 실제 배포 페이지
 - `githubUrl`: GitHub 저장소
+- 공개 실행 주소가 없는 작업은 `launchUrl`을 생략합니다. 카드와 목록은 상세 소개로 연결하고, 상세 페이지에는 공개 준비 상태를 표시합니다. `githubUrl`도 확인된 저장소가 있을 때만 넣습니다.
+- `sourceLabel`: 실행용 빌드만 공개한 저장소 등의 상세 페이지 버튼 문구
 - `screenshot`: `assets/screenshots` 안의 캡처 이미지
 - `videoSrc`: 대표 프로젝트처럼 자동 재생할 로컬 비디오
 - `imageLayout: "title"`: 타이틀 아트에 맞는 어두운 썸네일 배경
@@ -43,11 +45,13 @@ powershell -ExecutionPolicy Bypass -File scripts\capture-with-chrome.ps1
 
 전체 아카이브 카드는 동일한 16:10 이미지 영역에 원본 비율을 유지한 `contain` 방식으로 표시합니다. 위치별 세로 비율·엇갈린 위 여백·마우스 확대를 사용하지 않으며, 같은 줄의 시작 위치와 하단 링크가 정렬됩니다. 상태는 이미지 위 배지 대신 카드의 기존 메타 줄에 표시합니다.
 
-Arrow Unbound, Neon Wave, Prism Foundry, Pulse Hoops, Spectrum Drill은 하단 목록 표에서만 표시합니다. 현재 큰 카드는 30개, 전체 목록은 35개입니다. 검색 결과가 목록 전용 작품만 포함하면 하단 목록으로 이동하는 링크를 표시합니다.
+Arrow Unbound, Neon Wave, Prism Foundry, Pulse Hoops, Spectrum Drill은 하단 목록 표에서만 표시합니다. 현재 큰 카드는 40개, 전체 목록은 45개입니다. 검색 결과가 목록 전용 작품만 포함하면 하단 목록으로 이동하는 링크를 표시합니다.
 
 화락제 `hwarak.jpg`는 제목 전체와 수달이 보이는 대표 아트이며, `tipofmytouge-logo.png`는 원본 프로젝트 `Logo` 폴더의 완성된 네온 로고입니다.
 
 고양이양이(`10cat`), 서바이벌 새벽선(`-`), 책 요정(`book_`)은 GitHub Pages 공개 앱으로 연결합니다. 세 커버는 2026-09-14에 실제 공개 화면을 1280×800으로 캡처했습니다. 책 요정의 공개본은 현재 브라우저 저장과 준비된 질문을 이용하는 체험 앱입니다.
+
+2026-11-24에는 inside 4개 앱, Serapium, Seoul Days, with you, 웨딩 가든, 교내 키오스크, 혈당 자료 탐색을 추가했습니다. ‘레시피를 찾아라’는 제외했습니다. 공개 실행 주소가 있는 6개는 해당 앱으로 연결하고, Serapium·Seoul Days·with you·웨딩 가든은 제작 화면과 소개를 제공합니다. 원본 앱을 새로 배포하거나 공개 범위를 변경하지 않았습니다. [등록과 이미지 출처 기록](docs/update-2026-11-24.md)을 참고하세요.
 
 ## 검증
 

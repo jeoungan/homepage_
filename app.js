@@ -32,6 +32,143 @@ const projects = [
     note: "답답한 친구의 설명으로 단어를 추리해 보세요. 오프닝 원본은 소리가 없는 영상입니다."
   },
   {
+    id: "inside-jamsil",
+    title: "inside · 잠실야구장 3D",
+    repo: "inside-jamsil",
+    type: "tool",
+    status: "Published",
+    year: "2026",
+    launchUrl: "https://jeoungan.github.io/inside-jamsil/",
+    githubUrl: "https://github.com/jeoungan/inside-jamsil",
+    screenshot: "assets/screenshots/inside-jamsil.webp",
+    summary: "잠실야구장을 3D로 걸으며 좌석 구역과 편의시설을 찾는 공간 탐색·길안내 앱.",
+    tags: ["3D", "길찾기", "잠실야구장"],
+    note: "층과 계단·경사로를 오가며 시설을 검색하고 좌석을 입력합니다. 티켓 사진에서 좌석 정보를 읽는 기능도 제공합니다. 확인된 좌석과 시설 범위에서 안내하며, 현장 GPS나 실시간 위치 안내를 제공하지 않습니다."
+  },
+  {
+    id: "inside-starfield-suwon",
+    title: "inside · 수원 스타필드",
+    repo: "inside-starfield-suwon",
+    type: "tool",
+    status: "Published",
+    year: "2026",
+    launchUrl: "https://jeoungan.github.io/inside-starfield-suwon/",
+    githubUrl: "https://github.com/jeoungan/inside-starfield-suwon",
+    sourceLabel: "배포 파일 ↗",
+    screenshot: "assets/screenshots/inside-starfield-suwon.png",
+    summary: "수원 스타필드의 층별 공간과 별마당 도서관, 매장·시설을 둘러보는 독립 3D 길안내 앱.",
+    tags: ["3D", "실내 탐색", "스타필드"],
+    note: "공식 안내도와 방문 사진을 참고해 공용 공간을 구성했습니다. 목적지를 검색하고 층 사이를 걸어 이동할 수 있습니다. 공간의 치수와 연결에는 모델 추정이 포함되며, 저장소에는 실행용 빌드 파일만 공개합니다."
+  },
+  {
+    id: "inside-kt-wiz-park",
+    title: "inside · 수원 KT 위즈 파크",
+    repo: "inside-kt-wiz-park",
+    type: "tool",
+    status: "Published",
+    year: "2026",
+    launchUrl: "https://jeoungan.github.io/inside-kt-wiz-park/",
+    githubUrl: "https://github.com/jeoungan/inside-kt-wiz-park",
+    sourceLabel: "배포 파일 ↗",
+    screenshot: "assets/screenshots/inside-kt-wiz-park.png",
+    summary: "KT 위즈 파크의 공용 회랑과 관람 구역, 주요 시설을 탐색하는 독립 3D 길안내 앱.",
+    tags: ["3D", "길찾기", "KT 위즈 파크"],
+    note: "시작 게이트와 목적지를 고르고 경기장 공간을 걸어서 탐색합니다. 확인된 구역·시설을 중심으로 안내하며 공간의 치수에는 추정이 포함됩니다. 저장소에는 실행용 빌드 파일만 공개합니다."
+  },
+  {
+    id: "inside-lions-park",
+    title: "inside · 대구 삼성 라이온즈 파크",
+    repo: "inside-lions-park",
+    type: "tool",
+    status: "Published",
+    year: "2026",
+    launchUrl: "https://jeoungan.github.io/inside-lions-park/",
+    githubUrl: "https://github.com/jeoungan/inside-lions-park",
+    sourceLabel: "배포 파일 ↗",
+    screenshot: "assets/screenshots/inside-lions-park.png",
+    summary: "라이온즈 파크의 공용 회랑과 SKY 구역, 좌석·가족 편의시설을 둘러보는 3D 앱.",
+    tags: ["3D", "길찾기", "라이온즈 파크"],
+    note: "층 사이의 계단을 따라 이동하고 구역·시설을 검색합니다. 일부 직접 확인한 좌석 주소의 길찾기도 지원하며, 모든 좌석 번호를 안내하는 것은 아닙니다. 저장소에는 실행용 빌드 파일만 공개합니다."
+  },
+  {
+    id: "serapium",
+    title: "Serapium",
+    repo: "serapium",
+    type: "tool",
+    status: "공개 준비 중",
+    year: "2026",
+    screenshot: "assets/screenshots/serapium.png",
+    summary: "하루와 일정을 기록하고, 쌓인 기록을 나만의 책으로 엮어 인쇄·소장하는 작은 도서관.",
+    tags: ["다이어리", "PWA", "인쇄"],
+    note: "데일리·위클리·먼슬리 기록과 서재, 기간별 책 엮기, A4/A5 인쇄와 PDF·HTML 내보내기를 구현한 설치형 웹앱입니다. 기록은 기기의 브라우저에 저장합니다. 현재는 제작 화면을 소개하며 공개 실행 주소는 준비 중입니다."
+  },
+  {
+    id: "seoul-days",
+    title: "Seoul Days — 나의 서울 플레이리스트",
+    repo: "seoul-days",
+    type: "game",
+    status: "공개 준비 중",
+    year: "2026",
+    screenshot: "assets/screenshots/seoul-days.png",
+    imageLayout: "title",
+    summary: "한국 유학생활과 여행, K팝 팬의 일상과 만남을 그린 일러스트 로맨스 어드벤처.",
+    tags: ["어드벤처", "한국어·영어", "이야기"],
+    note: "한국어와 영어로 첫 여름의 28일을 경험하며 선택에 따라 관계와 추억을 쌓는 게임입니다. 현재는 로컬 제작 화면을 소개합니다. 공개 실행 주소는 준비 중이며 후속 품질 점검이 진행 중입니다."
+  },
+  {
+    id: "with-you",
+    title: "with you · 너와 함께",
+    repo: "with-you",
+    type: "game",
+    status: "제작 중",
+    year: "2026",
+    screenshot: "assets/screenshots/with-you.webp",
+    imageLayout: "title",
+    summary: "사물을 고르고 이야기를 읽으며 친구의 곁으로 천천히 걸어가는 일상 이야기 게임.",
+    tags: ["스토리", "일러스트", "선택"],
+    note: "퇴근길과 집, 함께 나누는 작은 대화와 사물의 기억을 따라갑니다. 도입부터 19일차까지의 완료본을 바탕으로 20일차를 제작하고 있습니다. 현재는 제작 화면 소개이며 공개 실행 주소는 준비 중입니다."
+  },
+  {
+    id: "wedding-garden",
+    title: "강정이네 웨딩 가든",
+    repo: "Visitor-s_book",
+    type: "site",
+    status: "공개 준비 중",
+    year: "2026",
+    githubUrl: "https://github.com/jeoungan/Visitor-s_book",
+    screenshot: "assets/screenshots/wedding-garden.webp",
+    summary: "나만의 하객 캐릭터를 꾸미고 손인사·춤·박수와 함께 축하를 전하는 웨딩 방명록.",
+    tags: ["웨딩", "캐릭터 꾸미기", "방명록"],
+    note: "헤어·의상·장신구를 골라 예식장을 산책하고 축하 메시지를 남기는 웹앱입니다. 메시지 저장과 Google Sheets 기록 연동을 구현했습니다. 현재는 예시 하객이 있는 제작 화면을 소개하며 공개 실행 주소는 준비 중입니다."
+  },
+  {
+    id: "hsmu-campus-signage",
+    title: "HSMU 교내 키오스크 광고",
+    repo: "hsmu-campus-signage",
+    type: "site",
+    status: "Published",
+    year: "2026",
+    launchUrl: "https://hsmu-campus-signage.vercel.app/",
+    screenshot: "assets/screenshots/hsmu-campus-signage.webp",
+    summary: "학교의 세로형 화면에 소식과 광고·영상·QR을 순환하는 교내 디지털 사이니지.",
+    tags: ["키오스크", "광고 제작", "운영 참여"],
+    note: "기존 교내 서비스에 광고 제작·등록·교체와 게시 기간 관리, 운영 개선으로 참여했습니다. 학교 소식과 학생 작품을 1080×1920 화면으로 소개하고 광고별 QR과 노출 기간을 관리합니다."
+  },
+  {
+    id: "blood-sugar-explorer",
+    title: "혈당 자료 탐색",
+    repo: "blood-sugar-explorer",
+    type: "experiment",
+    status: "Published",
+    year: "2026",
+    launchUrl: "https://jeoungan.github.io/blood-sugar-explorer/",
+    githubUrl: "https://github.com/jeoungan/blood-sugar-explorer",
+    screenshot: "assets/screenshots/blood-sugar-explorer.webp",
+    summary: "날짜별 혈당 기록을 비교하고 식사·활동 일정과 메모·사진을 함께 살펴보는 데이터 탐색 웹사이트.",
+    tags: ["데이터 시각화", "혈당", "활동 기록"],
+    note: "수업용 CGM 자료 탐색 화면을 개인 손끝 채혈 기록에 맞게 수정한 학습 프로젝트입니다. 날짜 겹치기·두 날짜 비교·시간대 필터·통계 요약과 같은 시간축의 활동 일정을 제공합니다."
+  },
+  {
     id: "10cat",
     title: "고양이양이 — 나른한 오후",
     repo: "10cat",
@@ -557,6 +694,15 @@ function externalLink(url, className, text) {
   return link;
 }
 
+function projectLink(project, className, text) {
+  if (project.launchUrl) return externalLink(project.launchUrl, className, text);
+  const link = document.createElement("a");
+  link.className = className;
+  link.href = `project.html?id=${encodeURIComponent(project.id)}`;
+  link.textContent = text;
+  return link;
+}
+
 const mediaControllers = new WeakMap();
 
 function createMedia(project, featured = false, active = true) {
@@ -858,7 +1004,7 @@ function createProjectCard(project) {
   const article = document.createElement("article");
   article.className = "project-card";
 
-  const mediaLink = externalLink(project.launchUrl, "media-link", "");
+  const mediaLink = projectLink(project, "media-link", "");
   mediaLink.append(createMedia(project));
 
   const body = document.createElement("div");
@@ -874,15 +1020,13 @@ function createProjectCard(project) {
   detailLink.textContent = project.title;
   title.append(detailLink);
 
-  const summary = externalLink(project.launchUrl, "project-summary-link", project.summary);
+  const summary = projectLink(project, "project-summary-link", project.summary);
   const tags = createTags(project.tags.slice(0, 3));
 
   const footer = document.createElement("div");
   footer.className = "project-footer";
-  footer.append(
-    externalLink(project.launchUrl, "open-link", "Open ↗"),
-    externalLink(project.githubUrl, "repo-link", project.repo)
-  );
+  footer.append(projectLink(project, "open-link", project.launchUrl ? "Open ↗" : "제작 화면 보기 →"));
+  if (project.githubUrl) footer.append(externalLink(project.githubUrl, "repo-link", project.repo));
 
   body.append(meta, title, summary, tags, footer);
   article.append(mediaLink, body);
@@ -898,7 +1042,7 @@ function renderReleaseRows() {
 
   root.replaceChildren(
     ...filteredProjects().map((project) => {
-      const row = externalLink(project.launchUrl, "release-row", "");
+      const row = projectLink(project, "release-row", "");
       if (project.imageLayout === "title") row.classList.add("title-cover-row");
       row.innerHTML = `
         <img src="${project.screenshot}" alt="${project.title} 스크린샷">
@@ -943,7 +1087,7 @@ function renderProjectDetail() {
 
   const media = selectedProject.videoSrc
     ? createMedia(selectedProject, true)
-    : externalLink(selectedProject.launchUrl, "detail-media-link", "");
+    : projectLink(selectedProject, "detail-media-link", "");
   if (!selectedProject.videoSrc) media.append(createMedia(selectedProject));
 
   const content = document.createElement("div");
@@ -966,15 +1110,22 @@ function renderProjectDetail() {
 
   const actions = document.createElement("div");
   actions.className = "detail-actions";
-  actions.append(
-    externalLink(selectedProject.launchUrl, "primary-link", "Open project ↗"),
-    externalLink(selectedProject.githubUrl, "secondary-link", "Source ↗"),
-    Object.assign(document.createElement("a"), {
+  if (selectedProject.launchUrl) {
+    actions.append(externalLink(selectedProject.launchUrl, "primary-link", "Open project ↗"));
+  } else {
+    const availability = document.createElement("span");
+    availability.className = "project-availability";
+    availability.textContent = "공개 실행 주소 준비 중";
+    actions.append(availability);
+  }
+  if (selectedProject.githubUrl) {
+    actions.append(externalLink(selectedProject.githubUrl, "secondary-link", selectedProject.sourceLabel || "Source ↗"));
+  }
+  actions.append(Object.assign(document.createElement("a"), {
       className: "secondary-link",
       href: "index.html#projects",
       textContent: "Back to archive"
-    })
-  );
+    }));
 
   content.append(meta, title, summary, createTags(selectedProject.tags), note, actions);
   detailRoot.replaceChildren(media, content);
